@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock, Paper, Scissors Game</title>
+    </head>
+
+    <body>
+        <script>
+        
+        let numberOfGames = prompt("Enter the number of games you wish to play");
+        let win = 0;
+        let lose = 0;
+        let tie = 0;
+
+        console.log(win);
+
+        for (i = 0; i < numberOfGames; i++) {
+            
+            function computerPlay () {
+
+                let play;
+                let n = Math.floor(100*Math.random());
+
+                switch(n%3) {
+                  case 0: 
+                  play = "rock";
+                  break;
+
+                  case 1:
+                  play = "paper";
+                  break;
+
+                  case 2:
+                  play = "scissors";
+                  break;
+                }
+                return play; 
+            }
+            
+            let computerSelection = computerPlay();
+            let playerSelection = (prompt("please enter your more (rock, paper, or scissors)!")).toLowerCase();
+
+            let result = playerSelection + computerSelection;
+            let msg;
+
+            switch (result) {
+              case "rockrock" : 
+                msg = "Rock and Rock cancel out. It's a tie";
+                tie++;
+                break;
+
+              case "rockpaper" :
+                msg = "Paper beats Rock. You lose!";
+                lose++;
+                break;
+
+              case "rockscissors" :
+                msg = "Rock beats Scissors. You win!";
+                win ++;
+                break;
+
+              case "paperrock" :
+                msg = "Paper beats Rock. You win!";
+                win ++;
+                break;
+
+              case "paperpaper" :
+                msg = "Paper and Paper cancel out. It's a tie!";
+                tie++;
+                break;
+
+              case "paperscissors" :
+                msg = "Scissors beat Paper. You lose!";
+                lose++;
+                break;
+
+              case "scissorsrock" :
+                msg = "Rock beats Scissors. You lose!";
+                lose++;
+                break;
+
+              case "scissorspaper" :
+                msg = "Scissors beat paper. You win!";
+                win ++;
+                break;
+
+              case "scissorsscissors" :
+                msg = "Scissors and Scissors cancel out. It's a tie!"
+                tie++;
+                break;
+
+              default:
+                msg = "Invalid input";
+                break;
+
+            }
+
+            window.alert("Computer played "+ computerSelection + ". You played " + playerSelection +". " + msg);
+        }
+
+        window.alert("Computer won " + lose + " games. You won " + win + " games. " + tie +
+         " games were tied. You won " + Math.floor(100*win/numberOfGames) + "% games. Congratulations!");
+
+        </script>
+    </body>
+</html>
